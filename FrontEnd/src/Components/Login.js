@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider } from "firebase/auth"
 import axios from "axios"
+import './Login.css'
 
 
 function Login (props) {
@@ -41,10 +42,13 @@ function Login (props) {
 
   return (
     <div>
-        <button onClick={handleLogin}>Log in</button>
-        <button onClick={handleLogout}>Log out</button>
-    </div>
-  );
+      <>
+      <button onClick={handleLogout} className='button'>Log out</button>
+      </>
+      <button onClick={handleLogin} className='button'>Log in</button>
+
+  </div>
+);
 }
 
 export default Login;

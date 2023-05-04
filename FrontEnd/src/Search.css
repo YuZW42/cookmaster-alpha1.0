@@ -68,14 +68,15 @@
 .button {
   background-color: white;
   background-size: auto;
-  border-style: none;
+  border: 2px solid black;
   font-size: 20px;
   font-weight: bold;
   outline: none;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: 30%;
   background-color:transparent;
   pointer-events: painted;
+  margin-right: 4px;
 }
 
 .expand-button{

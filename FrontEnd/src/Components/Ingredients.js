@@ -3,9 +3,11 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import './Ingredients.css';
+
 function Ingredients() {
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
+  const [warning, setWarning] = useState('');
   const[login, setLogin] = useState('');
 
   useEffect(() => {
@@ -68,13 +70,16 @@ function Ingredients() {
     // Clear all the food items
     const user = firebase.auth().currentUser;
     if (!user) {
-      console.error('Cannot add ingredient: user is not authenticated');
+      setWarning('Cannot add ingredient: user is not authenticated');
       return;
+    }else{
+      setWarning('')
     }
     const userDocRef = firebase.firestore().collection('users').doc(user._delegate.email);
 
     userDocRef.update({
       food: []
+      
     })
     .catch((error) => {
       console.error('Error clearing all ingredients: ', error);
@@ -83,22 +88,25 @@ function Ingredients() {
 
   return (
     <div>
-      <h1>My Ingredients</h1>
-      <ul>
+      <h1> <img class = "logo" src="cm3.png" alt="alternatetext" /></h1>
+      <div class="listbox">
         {ingredients.map((ingredient, index) => (
-          <li key={index}>{ingredient}</li>
+          <li key={index} className='list'>{ingredient}</li>
         ))}
-      </ul>
+      </div>
       <form onSubmit={handleFormSubmit}>
+        <div className="searchbox">
         <input
           type="text"
+          className="string"
           value={newIngredient}
           onChange={handleInputChange}
         />
-        <button type="submit">Add Ingredient</button>
-        <button type="button" onClick={handleClearAll}>Clear All</button>
+        <button type="submit" className="button">Add</button>
+        <button type="button" onClick={handleClearAll} className="button">Clear</button>
+        <p>{login}</p>
+        </div>
       </form>
-      <p>{login}</p>
     </div>
   );
 }

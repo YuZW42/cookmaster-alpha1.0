@@ -61,20 +61,24 @@ function Search(){
 
   return(
     <body className="search">
-        <header><h1> What ingredient do you want to use </h1> </header>
+        <header><h1> <img class = "logo" src="cm2.png" alt="alternatetext" /> </h1> </header>
       <form onSubmit={handleSubmit}>
-      <p>*** separate different ingredients with ",+" ***</p>
-        <label htmlFor="ingredient">Ingredient </label>
+      <p class="warning">Separate Different Ingredients With Commas</p>
+        <label htmlFor="ingredient"></label>
         <br></br>
+        <div class="searchbox">
         <input
           type="text"
+          class="string"
           id="ingredient"
+          placeholder="List Ingredients Here..."
           value={ingredient}
           onChange={handleInputChange}
           required
         />
-        
-        <button type="submit" className="recipe-button">Submit</button>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+        <button type="submit" className="button"><i class="fa fa-search"></i></button>
+        </div>
       </form>
       <div>{errormsg}</div>
       <div className="returned-recipe">
