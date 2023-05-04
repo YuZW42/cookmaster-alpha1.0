@@ -19,7 +19,7 @@ function Mystery(){
 
   return (
     <div>
-       <p>Check out the <b>Mystery Recipes</b> that might inspire your meal </p>
+       <p className="top">Check out the <b>Mystery Recipes</b> that might inspire your meal </p>
     <div class="Random">
      
 
